@@ -1,0 +1,18 @@
+PODS:
+  - ChameleonFramework/Default (2.1.0)
+  - ChameleonFramework/Swift (2.1.0):
+    - ChameleonFramework/Default
+  - RainbowNavigation (1.0.0)
+  - Reusable (2.1.0)
+
+DEPENDENCIES:
+  - ChameleonFramework/Swift (~> 2.1)
+  - RainbowNavigation (~> 1.0)
+  - Reusable (~> 2.0)
+
+SPEC CHECKSUMS:
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  RainbowNavigation: f22e8fa746a5c9cee7bc8ef4a02352e2f06d34e7
+  Reusable: 75807efc7c3612c058cd4a42f2c496f6676fc471
+
+COCOAPODS: 0.39.0
