@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3A4E4C2D63F8619AA60017C5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30BFB189BCCB8D781D7828B3 /* Pods.framework */; };
+		76001A1A1C6BD057002CA309 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76001A191C6BD057002CA309 /* Constants.swift */; };
 		7648A43C1C61435000EBF77E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7648A43B1C61435000EBF77E /* AppDelegate.swift */; };
 		7648A43E1C61435000EBF77E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7648A43D1C61435000EBF77E /* ViewController.swift */; };
 		7648A4411C61435000EBF77E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7648A43F1C61435000EBF77E /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		30BFB189BCCB8D781D7828B3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		520E5E0ABAC73101A884CE46 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		76001A191C6BD057002CA309 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7648A4381C61435000EBF77E /* AlbumTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlbumTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7648A43B1C61435000EBF77E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7648A43D1C61435000EBF77E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				7648A43B1C61435000EBF77E /* AppDelegate.swift */,
 				7648A43D1C61435000EBF77E /* ViewController.swift */,
 				7648A44F1C62987E00EBF77E /* AlbumViewControler.swift */,
+				76001A191C6BD057002CA309 /* Constants.swift */,
 				7648A43F1C61435000EBF77E /* Main.storyboard */,
 				7648A4421C61435000EBF77E /* Assets.xcassets */,
 				7648A4441C61435000EBF77E /* LaunchScreen.storyboard */,
@@ -245,6 +248,7 @@
 				7648A43E1C61435000EBF77E /* ViewController.swift in Sources */,
 				7648A43C1C61435000EBF77E /* AppDelegate.swift in Sources */,
 				7648A4501C62987E00EBF77E /* AlbumViewControler.swift in Sources */,
+				76001A1A1C6BD057002CA309 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
