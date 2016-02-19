@@ -18,20 +18,20 @@ private let beforeAppearOffset: CGFloat = 350
 class AlbumViewController: UIViewController {
   
   @IBOutlet var tableView: UITableView!
-  @IBOutlet var header: AlbumHeader!
+  private var canAnimate = false
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     tableView.tableFooterView = UIView(frame: CGRectZero)
-    //tableView.tableHeaderView = header
   }
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
+    view.backgroundColor = Color.Covers.Krit.background
+    self.navigationController?.navigationBar.tintColor = Color.Covers.Krit.background
     animateTableView()
     self.setStatusBarStyle(UIStatusBarStyleContrast)
-    header.gradientBackground.backgroundColor = GradientColor(.TopToBottom, frame: header.frame, colors: [UIColor.clearColor(), UIColor(hexString: "B3272A"), UIColor(hexString: "B3272A"), UIColor(hexString: "B3272A")])
   }
 
   @IBAction func shop() {
@@ -40,19 +40,33 @@ class AlbumViewController: UIViewController {
   
   func animateTableView() {
     tableView.contentInset = UIEdgeInsets(top: tableViewOffset, left: 0, bottom: 0, right: 0)
-    tableView.contentOffset = CGPoint(x: 0, y: -beforeAppearOffset)
-    UIView.animateWithDuration(0.5, animations: {
-      self.tableView.contentOffset = CGPoint(x: 0, y: -tableViewOffset)
-    })
+    tableView.contentOffset = CGPoint(x: 0, y: -tableViewOffset)
+    canAnimate = true
   }
   
   func scrollViewDidScroll(scrollView: UIScrollView) {
-    //let themeColor = UIColor(red: 247/255.0, green: 80/255.0, blue: 120/255.0, alpha: 1.0)
+    if !canAnimate {
+      return
+    }
     
-    print(scrollView.contentOffset.y)
+    let offsetY = scrollView.contentOffset.y
     
+    if offsetY < -tableViewOffset {
+      scrollView.contentOffset = CGPoint(x: scrollView.contentOffset.x, y: -tableViewOffset)
+    } else if offsetY > -tableViewOffset {
+      let maxOffset = tableViewOffset - 64
+      var progress = (offsetY + 70) / maxOffset
+      progress = min(progress, 1)
+      self.navigationController?.navigationBar.df_setBackgroundColor(Color.Covers.Krit.background.colorWithAlphaComponent(progress))
+      if progress >= 0.8 {
+        self.navigationController?.navigationBar.tintColor = Color.Covers.Krit.text
+      } else {
+        self.navigationController?.navigationBar.tintColor = Color.Covers.Krit.background
+      }
+    }
+
 //    if scrollView.contentOffset.y != -beforeAppearOffset {
-//      let offsetY = scrollView.contentOffset.y
+//
 //      if offsetY >= 0 {
 //        let height = self.tableView.tableHeaderView!.bounds.height
 //        let maxOffset = height - 64
@@ -67,26 +81,26 @@ class AlbumViewController: UIViewController {
   }
   
   func infoCellColor(cell: InfoTableCell) {
-    cell.gradientBackground.backgroundColor = GradientColor(.TopToBottom, frame: cell.gradientBackground.frame, colors: [UIColor.clearColor(), Color.Covers.Wayne.background, Color.Covers.Wayne.background])
-    cell.albumName.textColor = Color.Covers.Wayne.text1
-    cell.artistName.textColor = Color.Covers.Wayne.text1
-    cell.countPlay.textColor = Color.Covers.Wayne.text1
-    cell.countLike.textColor = Color.Covers.Wayne.text1
-    cell.countComment.textColor = Color.Covers.Wayne.text1
-    cell.likeImage.tintImageColor(Color.Covers.Wayne.button)
-    cell.playImage.tintImageColor(Color.Covers.Wayne.button)
-    cell.commentImage.tintImageColor(Color.Covers.Wayne.button)
-    cell.shareButton.tintButtonColor(Color.Covers.Wayne.button)
-    cell.playlistButton.tintButtonColor(Color.Covers.Wayne.button)
-    cell.commentsButton.tintButtonColor(Color.Covers.Wayne.button)
+    cell.gradientBackground.backgroundColor = GradientColor(.TopToBottom, frame: cell.gradientBackground.frame, colors: [UIColor.clearColor(), Color.Covers.Krit.background, Color.Covers.Krit.background])
+    cell.albumName.textColor = Color.Covers.Krit.text
+    cell.artistName.textColor = Color.Covers.Krit.text
+    cell.countPlay.textColor = Color.Covers.Krit.text
+    cell.countLike.textColor = Color.Covers.Krit.text
+    cell.countComment.textColor = Color.Covers.Krit.text
+    cell.likeImage.tintImageColor(Color.Covers.Krit.button)
+    cell.playImage.tintImageColor(Color.Covers.Krit.button)
+    cell.commentImage.tintImageColor(Color.Covers.Krit.button)
+    cell.shareButton.tintButtonColor(Color.Covers.Krit.button)
+    cell.playlistButton.tintButtonColor(Color.Covers.Krit.button)
+    cell.commentsButton.tintButtonColor(Color.Covers.Krit.button)
   }
   
   func trackCellColor(cell: TrackTableCell) {
-    cell.backgroundColor = Color.Covers.Wayne.background
-    cell.trackNumberLabel.textColor = Color.Covers.Wayne.text2
-    cell.trackNameLabel.textColor = Color.Covers.Wayne.text1
-    cell.trackTimeLabel.textColor = Color.Covers.Wayne.text2
-    cell.moreButton.tintButtonColor(Color.Covers.Wayne.button)
+    cell.backgroundColor = Color.Covers.Krit.background
+    cell.trackNumberLabel.textColor = Color.Covers.Krit.subtext
+    cell.trackNameLabel.textColor = Color.Covers.Krit.text
+    cell.trackTimeLabel.textColor = Color.Covers.Krit.subtext
+    cell.moreButton.tintButtonColor(Color.Covers.Krit.button)
   }
 
 }
@@ -111,6 +125,7 @@ extension AlbumViewController: UITableViewDelegate {
     
     let trackCell = cell as! TrackTableCell
     trackCell.trackNumberLabel.text =  "\(indexPath.row)"
+    
     trackCellColor(trackCell)
   }
 
@@ -134,13 +149,13 @@ extension AlbumViewController: UITableViewDataSource {
 
 
 
-
 class TrackTableCell: UITableViewCell, Reusable {
   @IBOutlet private weak var trackNameLabel: UILabel!
   @IBOutlet private weak var trackNumberLabel: UILabel!
   @IBOutlet private weak var trackTimeLabel: UILabel!
   @IBOutlet private weak var moreButton: UIButton!
 }
+
 
 class InfoTableCell: UITableViewCell, Reusable {
   @IBOutlet private var gradientBackground: UIView!

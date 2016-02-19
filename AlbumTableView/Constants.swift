@@ -12,16 +12,16 @@ import ChameleonFramework
 struct Color {
   struct Covers {
     struct Krit {
-      static let background = UIColor(hexString: "140E30")
-      static let text1 = UIColor(hexString: "FAFBFC")
-      static let text2 = UIColor(hexString: "604480")
-      static let button = UIColor(hexString: "B39276")
+      static let background = UIColor(hexString: "F9FAFB")
+      static let text = UIColor(hexString: "78787B")
+      static let subtext = UIColor(hexString: "9D9D9D")
+      static let button = UIColor(hexString: "78787B")
     }
     
     struct Wayne {
       static let background = UIColor(hexString: "272934")
-      static let text1 = UIColor(hexString: "B0AAAF")
-      static let text2 = UIColor(hexString: "251F1F")
+      static let text = UIColor(hexString: "B0AAAF")
+      static let subtext = UIColor(hexString: "251F1F")
       static let button = UIColor(hexString: "FC5C66")
     }
   }

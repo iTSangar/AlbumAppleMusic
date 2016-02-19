@@ -15,7 +15,7 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Featured-->
         <scene sceneID="cmg-XO-A7I">
             <objects>
                 <viewController id="EGE-Xf-Tjy" customClass="ViewController" customModule="AlbumTableView" customModuleProvider="target" sceneMemberID="viewController">
@@ -53,7 +53,7 @@
                             <constraint firstItem="GgQ-Pb-JOX" firstAttribute="centerX" secondItem="lKw-1C-ib2" secondAttribute="centerX" id="btA-L3-aqx"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="YnL-Bq-aGn"/>
+                    <navigationItem key="navigationItem" title="Featured" id="YnL-Bq-aGn"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v6U-ke-Bc2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -266,7 +266,6 @@
                     <navigationItem key="navigationItem" id="bEL-Fu-x3b"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <outlet property="header" destination="aoL-nZ-SUx" id="smH-ub-lb9"/>
                         <outlet property="tableView" destination="obs-5F-bfy" id="A6g-p3-GXn"/>
                     </connections>
                 </viewController>
