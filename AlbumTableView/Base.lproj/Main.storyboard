@@ -245,6 +245,97 @@
                                             <outlet property="trackTimeLabel" destination="rMK-dV-Pkv" id="UbX-C9-NM2"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MoreAlbumCell" rowHeight="255" id="HFY-38-WwQ" customClass="MoreAlbumCell" customModule="AlbumTableView" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="248" width="414" height="255"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HFY-38-WwQ" id="Qfd-8u-B2B">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="254"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="That Crazy Owl" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsB-Li-iHL">
+                                                    <rect key="frame" x="16" y="203" width="104" height="38"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="38" id="1g6-re-bVX"/>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="117" id="ZF1-Pu-wUi"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mixing Up The Medicine" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EsK-0e-CyB">
+                                                    <rect key="frame" x="157" y="203" width="102" height="38"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="117" id="ENy-1o-IHE"/>
+                                                        <constraint firstAttribute="height" constant="38" id="aXw-Ty-di5"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWa-hK-FRW">
+                                                    <rect key="frame" x="15" y="18" width="141" height="30"/>
+                                                    <state key="normal" title="MORE BY FUTURE &gt;">
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffs-CJ-yDG">
+                                                    <rect key="frame" x="0.0" y="60" width="135" height="135"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="ffs-CJ-yDG" secondAttribute="height" multiplier="1:1" id="P9e-cC-qSf"/>
+                                                    </constraints>
+                                                    <state key="normal" image="cover1"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xkg-oa-LDV">
+                                                    <rect key="frame" x="140" y="60" width="135" height="135"/>
+                                                    <state key="normal" image="cover6"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O17-vd-bg0">
+                                                    <rect key="frame" x="279" y="60" width="135" height="135"/>
+                                                    <state key="normal" image="cover7"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remixing The Medicine Black Edition" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jca-ju-nF4">
+                                                    <rect key="frame" x="290" y="203" width="114" height="38"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="117" id="X9I-JK-cgQ"/>
+                                                        <constraint firstAttribute="height" constant="38" id="Z7F-Hq-T12"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="jca-ju-nF4" firstAttribute="top" secondItem="O17-vd-bg0" secondAttribute="bottom" constant="8" id="0BM-uI-iTG"/>
+                                                <constraint firstItem="ffs-CJ-yDG" firstAttribute="leading" secondItem="Qfd-8u-B2B" secondAttribute="leading" id="8pu-Zs-mdy"/>
+                                                <constraint firstItem="jca-ju-nF4" firstAttribute="centerX" secondItem="O17-vd-bg0" secondAttribute="centerX" id="ClP-42-BRl"/>
+                                                <constraint firstItem="EsK-0e-CyB" firstAttribute="top" secondItem="Xkg-oa-LDV" secondAttribute="bottom" constant="8" id="FrT-B4-9dg"/>
+                                                <constraint firstItem="Xkg-oa-LDV" firstAttribute="width" secondItem="ffs-CJ-yDG" secondAttribute="width" id="GWj-dL-Wsu"/>
+                                                <constraint firstItem="O17-vd-bg0" firstAttribute="height" secondItem="ffs-CJ-yDG" secondAttribute="height" id="Nkp-eU-xJg"/>
+                                                <constraint firstItem="O17-vd-bg0" firstAttribute="leading" secondItem="Xkg-oa-LDV" secondAttribute="trailing" constant="4" id="OZq-2J-lGp"/>
+                                                <constraint firstItem="O17-vd-bg0" firstAttribute="width" secondItem="ffs-CJ-yDG" secondAttribute="width" id="Pxn-8F-6Xb"/>
+                                                <constraint firstItem="fsB-Li-iHL" firstAttribute="top" secondItem="ffs-CJ-yDG" secondAttribute="bottom" constant="8" id="PyQ-CY-uvs"/>
+                                                <constraint firstItem="aWa-hK-FRW" firstAttribute="top" secondItem="Qfd-8u-B2B" secondAttribute="top" constant="18" id="YfY-Pz-Msx"/>
+                                                <constraint firstItem="aWa-hK-FRW" firstAttribute="leading" secondItem="Qfd-8u-B2B" secondAttribute="leading" constant="15" id="Zkb-ye-Gb5"/>
+                                                <constraint firstItem="EsK-0e-CyB" firstAttribute="centerX" secondItem="Xkg-oa-LDV" secondAttribute="centerX" id="bUc-tg-PtC"/>
+                                                <constraint firstItem="Xkg-oa-LDV" firstAttribute="top" secondItem="ffs-CJ-yDG" secondAttribute="top" id="fIx-Of-EU1"/>
+                                                <constraint firstItem="Xkg-oa-LDV" firstAttribute="leading" secondItem="ffs-CJ-yDG" secondAttribute="trailing" constant="5" id="hDV-im-wsb"/>
+                                                <constraint firstAttribute="trailing" secondItem="O17-vd-bg0" secondAttribute="trailing" id="iM1-2O-jtZ"/>
+                                                <constraint firstItem="Xkg-oa-LDV" firstAttribute="height" secondItem="ffs-CJ-yDG" secondAttribute="height" id="pwJ-Mi-tzd"/>
+                                                <constraint firstItem="ffs-CJ-yDG" firstAttribute="top" secondItem="aWa-hK-FRW" secondAttribute="bottom" constant="12" id="sU3-9p-JQQ"/>
+                                                <constraint firstItem="O17-vd-bg0" firstAttribute="top" secondItem="Xkg-oa-LDV" secondAttribute="top" id="swx-Q6-nMD"/>
+                                                <constraint firstItem="fsB-Li-iHL" firstAttribute="centerX" secondItem="ffs-CJ-yDG" secondAttribute="centerX" id="tmi-pn-YzX"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="albumName1" destination="fsB-Li-iHL" id="SRG-ZV-15i"/>
+                                            <outlet property="albumName2" destination="EsK-0e-CyB" id="P6c-9e-jWp"/>
+                                            <outlet property="albumName3" destination="jca-ju-nF4" id="Sg1-DE-5AK"/>
+                                            <outlet property="cover1" destination="ffs-CJ-yDG" id="gDf-4I-eAe"/>
+                                            <outlet property="cover2" destination="Xkg-oa-LDV" id="lET-TZ-3sm"/>
+                                            <outlet property="cover3" destination="O17-vd-bg0" id="VTR-Rs-Hda"/>
+                                            <outlet property="moreBy" destination="aWa-hK-FRW" id="AYo-KS-szG"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="SOm-D1-JVI" id="EqZ-sx-7nl"/>
@@ -404,6 +495,9 @@
     </scenes>
     <resources>
         <image name="cell_more" width="14" height="4"/>
+        <image name="cover1" width="250" height="250"/>
+        <image name="cover6" width="250" height="250"/>
+        <image name="cover7" width="250" height="250"/>
         <image name="cover8" width="250" height="250"/>
         <image name="header_comment" width="24" height="20"/>
         <image name="header_info_comment" width="14" height="12"/>

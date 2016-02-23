@@ -24,14 +24,26 @@ class AlbumViewController: UIViewController {
     super.viewDidLoad()
     
     tableView.tableFooterView = UIView(frame: CGRectZero)
+    UIApplication.sharedApplication().statusBarStyle = .LightContent
+  }
+  
+  override func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(animated)
+    view.backgroundColor = Color.Covers.Krit.background
+    self.navigationController?.navigationBar.tintColor = Color.Covers.Krit.background
+    //animateTableView()
   }
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
-    view.backgroundColor = Color.Covers.Krit.background
-    self.navigationController?.navigationBar.tintColor = Color.Covers.Krit.background
+    print("shop")
     animateTableView()
-    self.setStatusBarStyle(UIStatusBarStyleContrast)
+  }
+
+  
+  override func viewDidDisappear(animated: Bool) {
+    super.viewDidDisappear(animated)
+    UIApplication.sharedApplication().statusBarStyle = .Default
   }
 
   @IBAction func shop() {
@@ -45,9 +57,7 @@ class AlbumViewController: UIViewController {
   }
   
   func scrollViewDidScroll(scrollView: UIScrollView) {
-    if !canAnimate {
-      return
-    }
+    if !canAnimate { return }
     
     let offsetY = scrollView.contentOffset.y
     
@@ -60,28 +70,16 @@ class AlbumViewController: UIViewController {
       self.navigationController?.navigationBar.df_setBackgroundColor(Color.Covers.Krit.background.colorWithAlphaComponent(progress))
       if progress >= 0.8 {
         self.navigationController?.navigationBar.tintColor = Color.Covers.Krit.text
+        UIApplication.sharedApplication().statusBarStyle = .Default
       } else {
         self.navigationController?.navigationBar.tintColor = Color.Covers.Krit.background
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
       }
     }
-
-//    if scrollView.contentOffset.y != -beforeAppearOffset {
-//
-//      if offsetY >= 0 {
-//        let height = self.tableView.tableHeaderView!.bounds.height
-//        let maxOffset = height - 64
-//        
-//        var progress = (scrollView.contentOffset.y - 64) / maxOffset
-//        progress = min(progress, 1)
-//        
-//        self.navigationController?.navigationBar.df_setBackgroundColor(themeColor.colorWithAlphaComponent(progress))
-//      }
-//      
-//    }
   }
   
   func infoCellColor(cell: InfoTableCell) {
-    cell.gradientBackground.backgroundColor = GradientColor(.TopToBottom, frame: cell.gradientBackground.frame, colors: [UIColor.clearColor(), Color.Covers.Krit.background, Color.Covers.Krit.background])
+    cell.gradientBackground.backgroundColor = GradientColor(.TopToBottom, frame: cell.gradientBackground.frame, colors: [UIColor.clearColor(), Color.Covers.Krit.background, Color.Covers.Krit.background, Color.Covers.Krit.background])
     cell.albumName.textColor = Color.Covers.Krit.text
     cell.artistName.textColor = Color.Covers.Krit.text
     cell.countPlay.textColor = Color.Covers.Krit.text
@@ -103,6 +101,14 @@ class AlbumViewController: UIViewController {
     cell.moreButton.tintButtonColor(Color.Covers.Krit.button)
   }
 
+  func moreCellColor(cell: MoreAlbumCell) {
+    cell.backgroundColor = Color.Covers.Krit.background
+    cell.moreBy.titleLabel?.textColor = Color.Covers.Krit.text
+    cell.albumName1.textColor = Color.Covers.Krit.text
+    cell.albumName2.textColor = Color.Covers.Krit.text
+    cell.albumName3.textColor = Color.Covers.Krit.text
+  }
+
 }
 
 extension AlbumViewController: RainbowColorSource {
@@ -114,12 +120,19 @@ extension AlbumViewController: RainbowColorSource {
 extension AlbumViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    return indexPath.row == 0 ? 160 : 60
+    switch indexPath.row {
+    case 0: return 160
+    case 15: return 255
+    default: return 60
+    }
   }
   
   func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
     if indexPath.row == 0 {
       infoCellColor(cell as! InfoTableCell)
+      return
+    } else if indexPath.row == 15 {
+      moreCellColor(cell as! MoreAlbumCell)
       return
     }
     
@@ -136,7 +149,9 @@ extension AlbumViewController: UITableViewDataSource {
     var cell = UITableViewCell()
     if indexPath.row == 0 {
       cell = tableView.dequeueReusableCell(indexPath: indexPath) as InfoTableCell
-    } else {
+    } else if indexPath.row == 15 {
+      cell = tableView.dequeueReusableCell(indexPath: indexPath) as MoreAlbumCell
+    }else {
       cell = tableView.dequeueReusableCell(indexPath: indexPath) as TrackTableCell
     }
     return cell
@@ -179,4 +194,14 @@ class AlbumHeader: UIView {
   @IBOutlet var countPlay: UILabel!
   @IBOutlet var countLike: UILabel!
   @IBOutlet var countComment: UILabel!
+}
+
+class MoreAlbumCell: UITableViewCell, Reusable {
+  @IBOutlet private var moreBy: UIButton!
+  @IBOutlet private var cover1: UIButton!
+  @IBOutlet private var cover2: UIButton!
+  @IBOutlet private var cover3: UIButton!
+  @IBOutlet private var albumName1: UILabel!
+  @IBOutlet private var albumName2: UILabel!
+  @IBOutlet private var albumName3: UILabel!
 }
