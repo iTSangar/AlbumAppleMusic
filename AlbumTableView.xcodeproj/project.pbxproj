@@ -20,6 +20,7 @@
 		76CBA8611C65234E00E3700A /* BebasNeue Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 76CBA85C1C65234E00E3700A /* BebasNeue Light.ttf */; };
 		76CBA8621C65234E00E3700A /* BebasNeue Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 76CBA85D1C65234E00E3700A /* BebasNeue Regular.ttf */; };
 		76CBA8631C65234E00E3700A /* BebasNeue Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 76CBA85E1C65234E00E3700A /* BebasNeue Thin.ttf */; };
+		76F23CF91C7E4A8E003DF611 /* AlbumSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F23CF81C7E4A8E003DF611 /* AlbumSupport.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		76CBA85C1C65234E00E3700A /* BebasNeue Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue Light.ttf"; path = "fonts/BebasNeue Light.ttf"; sourceTree = "<group>"; };
 		76CBA85D1C65234E00E3700A /* BebasNeue Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue Regular.ttf"; path = "fonts/BebasNeue Regular.ttf"; sourceTree = "<group>"; };
 		76CBA85E1C65234E00E3700A /* BebasNeue Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue Thin.ttf"; path = "fonts/BebasNeue Thin.ttf"; sourceTree = "<group>"; };
+		76F23CF81C7E4A8E003DF611 /* AlbumSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumSupport.swift; sourceTree = "<group>"; };
 		867157210E1B5F9568897964 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,6 +97,7 @@
 				7648A43B1C61435000EBF77E /* AppDelegate.swift */,
 				7648A43D1C61435000EBF77E /* ViewController.swift */,
 				7648A44F1C62987E00EBF77E /* AlbumViewControler.swift */,
+				76F23CF81C7E4A8E003DF611 /* AlbumSupport.swift */,
 				76001A191C6BD057002CA309 /* Constants.swift */,
 				7648A43F1C61435000EBF77E /* Main.storyboard */,
 				7648A4421C61435000EBF77E /* Assets.xcassets */,
@@ -245,6 +248,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76F23CF91C7E4A8E003DF611 /* AlbumSupport.swift in Sources */,
 				7648A43E1C61435000EBF77E /* ViewController.swift in Sources */,
 				7648A43C1C61435000EBF77E /* AppDelegate.swift in Sources */,
 				7648A4501C62987E00EBF77E /* AlbumViewControler.swift in Sources */,

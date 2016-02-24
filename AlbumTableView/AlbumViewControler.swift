@@ -25,21 +25,11 @@ class AlbumViewController: UIViewController {
     
     tableView.tableFooterView = UIView(frame: CGRectZero)
     UIApplication.sharedApplication().statusBarStyle = .LightContent
-  }
-  
-  override func viewDidAppear(animated: Bool) {
-    super.viewDidAppear(animated)
+    
     view.backgroundColor = Color.Covers.Krit.background
     self.navigationController?.navigationBar.tintColor = Color.Covers.Krit.background
-    //animateTableView()
-  }
-  
-  override func viewWillAppear(animated: Bool) {
-    super.viewWillAppear(animated)
-    print("shop")
     animateTableView()
   }
-
   
   override func viewDidDisappear(animated: Bool) {
     super.viewDidDisappear(animated)
@@ -52,7 +42,9 @@ class AlbumViewController: UIViewController {
   
   func animateTableView() {
     tableView.contentInset = UIEdgeInsets(top: tableViewOffset, left: 0, bottom: 0, right: 0)
-    tableView.contentOffset = CGPoint(x: 0, y: -tableViewOffset)
+    UIView.animateWithDuration(0.5, animations: {
+      self.tableView.contentOffset = CGPoint(x: 0, y: -tableViewOffset)
+    })
     canAnimate = true
   }
   
@@ -77,39 +69,8 @@ class AlbumViewController: UIViewController {
       }
     }
   }
-  
-  func infoCellColor(cell: InfoTableCell) {
-    cell.gradientBackground.backgroundColor = GradientColor(.TopToBottom, frame: cell.gradientBackground.frame, colors: [UIColor.clearColor(), Color.Covers.Krit.background, Color.Covers.Krit.background, Color.Covers.Krit.background])
-    cell.albumName.textColor = Color.Covers.Krit.text
-    cell.artistName.textColor = Color.Covers.Krit.text
-    cell.countPlay.textColor = Color.Covers.Krit.text
-    cell.countLike.textColor = Color.Covers.Krit.text
-    cell.countComment.textColor = Color.Covers.Krit.text
-    cell.likeImage.tintImageColor(Color.Covers.Krit.button)
-    cell.playImage.tintImageColor(Color.Covers.Krit.button)
-    cell.commentImage.tintImageColor(Color.Covers.Krit.button)
-    cell.shareButton.tintButtonColor(Color.Covers.Krit.button)
-    cell.playlistButton.tintButtonColor(Color.Covers.Krit.button)
-    cell.commentsButton.tintButtonColor(Color.Covers.Krit.button)
-  }
-  
-  func trackCellColor(cell: TrackTableCell) {
-    cell.backgroundColor = Color.Covers.Krit.background
-    cell.trackNumberLabel.textColor = Color.Covers.Krit.subtext
-    cell.trackNameLabel.textColor = Color.Covers.Krit.text
-    cell.trackTimeLabel.textColor = Color.Covers.Krit.subtext
-    cell.moreButton.tintButtonColor(Color.Covers.Krit.button)
-  }
-
-  func moreCellColor(cell: MoreAlbumCell) {
-    cell.backgroundColor = Color.Covers.Krit.background
-    cell.moreBy.titleLabel?.textColor = Color.Covers.Krit.text
-    cell.albumName1.textColor = Color.Covers.Krit.text
-    cell.albumName2.textColor = Color.Covers.Krit.text
-    cell.albumName3.textColor = Color.Covers.Krit.text
-  }
-
 }
+
 
 extension AlbumViewController: RainbowColorSource {
   func navigationBarInColor() -> UIColor {
@@ -117,8 +78,8 @@ extension AlbumViewController: RainbowColorSource {
   }
 }
 
+
 extension AlbumViewController: UITableViewDelegate {
-  
   func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
     switch indexPath.row {
     case 0: return 160
@@ -128,21 +89,23 @@ extension AlbumViewController: UITableViewDelegate {
   }
   
   func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-    if indexPath.row == 0 {
-      infoCellColor(cell as! InfoTableCell)
-      return
-    } else if indexPath.row == 15 {
-      moreCellColor(cell as! MoreAlbumCell)
-      return
+    if cell is InfoTableCell {
+      let iCell = cell as! InfoTableCell
+      if iCell.delegate == nil { iCell.delegate = self }
+      iCell.configCellColor()
+    } else if cell is TrackTableCell {
+      let tCell = cell as! TrackTableCell
+      if tCell.delegate == nil { tCell.delegate = self }
+      tCell.trackNumberLabel.text = "\(indexPath.row)"
+      tCell.configCellColor()
+    } else if cell is MoreAlbumCell {
+      let mCell = cell as! MoreAlbumCell
+      if mCell.delegate == nil { mCell.delegate = self }
+      mCell.configCellColor()
     }
-    
-    let trackCell = cell as! TrackTableCell
-    trackCell.trackNumberLabel.text =  "\(indexPath.row)"
-    
-    trackCellColor(trackCell)
   }
-
 }
+
 
 extension AlbumViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -154,6 +117,7 @@ extension AlbumViewController: UITableViewDataSource {
     }else {
       cell = tableView.dequeueReusableCell(indexPath: indexPath) as TrackTableCell
     }
+    
     return cell
   }
   
@@ -163,45 +127,27 @@ extension AlbumViewController: UITableViewDataSource {
 }
 
 
-
-class TrackTableCell: UITableViewCell, Reusable {
-  @IBOutlet private weak var trackNameLabel: UILabel!
-  @IBOutlet private weak var trackNumberLabel: UILabel!
-  @IBOutlet private weak var trackTimeLabel: UILabel!
-  @IBOutlet private weak var moreButton: UIButton!
+extension AlbumViewController: AlbumButtonCellDelegate {
+  func actionInfoCellTapped(cell: InfoTableCell, type: InfoButtonType) {
+    switch type {
+    case .Share: print("share tap")
+    case .Playlist: print("playlist tap")
+    case .Comments: print("comments tap")
+    }
+  }
+  
+  func actionTrackCellTapped(cell: TrackTableCell) {
+    print("track tap")
+  }
+  
+  func actionAlbumCellTapped(cell: MoreAlbumCell, type: AlbumButtonType) {
+    switch type {
+    case .MoreBy: print("moreBy tap")
+    case .Cover1: print("cover 1 tap")
+    case .Cover2: print("cover 2 tap")
+    case .Cover3: print("cover 3 tap")
+    }
+  }
+  
 }
 
-
-class InfoTableCell: UITableViewCell, Reusable {
-  @IBOutlet private var gradientBackground: UIView!
-  @IBOutlet private var commentsButton: UIButton!
-  @IBOutlet private var playlistButton: UIButton!
-  @IBOutlet private var shareButton: UIButton!
-  @IBOutlet private var commentImage: UIImageView!
-  @IBOutlet private var playImage: UIImageView!
-  @IBOutlet private var likeImage: UIImageView!
-  @IBOutlet private var albumName: UILabel!
-  @IBOutlet private var artistName: UILabel!
-  @IBOutlet private var countPlay: UILabel!
-  @IBOutlet private var countLike: UILabel!
-  @IBOutlet private var countComment: UILabel!
-}
-
-class AlbumHeader: UIView {
-  @IBOutlet var gradientBackground: UIView!
-  @IBOutlet var albumName: UILabel!
-  @IBOutlet var artistName: UILabel!
-  @IBOutlet var countPlay: UILabel!
-  @IBOutlet var countLike: UILabel!
-  @IBOutlet var countComment: UILabel!
-}
-
-class MoreAlbumCell: UITableViewCell, Reusable {
-  @IBOutlet private var moreBy: UIButton!
-  @IBOutlet private var cover1: UIButton!
-  @IBOutlet private var cover2: UIButton!
-  @IBOutlet private var cover3: UIButton!
-  @IBOutlet private var albumName1: UILabel!
-  @IBOutlet private var albumName2: UILabel!
-  @IBOutlet private var albumName3: UILabel!
-}

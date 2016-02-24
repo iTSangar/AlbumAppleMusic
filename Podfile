@@ -5,3 +5,4 @@ use_frameworks!
 pod 'Reusable', '~> 2.0'
 pod 'RainbowNavigation', '~> 1.0'
 pod 'ChameleonFramework/Swift', '~> 2.1'
+pod 'Hue', '~> 1.0'

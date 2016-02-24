@@ -85,11 +85,13 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/ChameleonFramework.framework"
+  install_framework "Pods/Hue.framework"
   install_framework "Pods/RainbowNavigation.framework"
   install_framework "Pods/Reusable.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/ChameleonFramework.framework"
+  install_framework "Pods/Hue.framework"
   install_framework "Pods/RainbowNavigation.framework"
   install_framework "Pods/Reusable.framework"
 fi
