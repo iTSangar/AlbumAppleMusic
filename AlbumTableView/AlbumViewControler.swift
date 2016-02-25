@@ -137,7 +137,7 @@ extension AlbumViewController: AlbumButtonCellDelegate {
   }
   
   func actionTrackCellTapped(cell: TrackTableCell) {
-    print("track tap")
+    print("track tap at \(tableView.indexPathForCell(cell)!.row)")
   }
   
   func actionAlbumCellTapped(cell: MoreAlbumCell, type: AlbumButtonType) {
